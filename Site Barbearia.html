@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="pt_BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Barbearia Pai e Filho</title>
+  <style>
+    /* Reset básico */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f4f4f4;
+      color: #333333;
+      line-height: 1.6;
+    }
+    
+    header {
+      background: #333333;
+      color: #fff;
+      padding: 20px 0;
+      text-align: center;
+    }
+    
+    nav {
+      margin: 10px 0;
+      text-align: center;
+    }
+    
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      padding: 10px 20px;
+      transition: background 0.3s;
+    }
+    
+    nav a:hover {
+      background: #575757;
+    }
+    
+    .container {
+      width: 80%;
+      margin: auto;
+      overflow: hidden;
+    }
+    
+    /* Seção hero */
+    .hero {
+      background: url('https://images.unsplash.com/photo-1594737625785-06b5cf8f7d3b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1600&q=80') no-repeat center center/cover;
+      height: 400px;
+      position: relative;
+    }
+    
+    .hero-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: #fff;
+      background: rgba(0, 0, 0, 0.5);
+      padding: 20px;
+      border-radius: 5px;
+      text-align: center;
+      z-index: 2;
+    }
+    
+    /* Botão do header já aparece com os links; o hero não possui atalho para a galeria agora */
+    .btn {
+      display: inline-block;
+      background: #333;
+      color: #fff;
+      padding: 10px 20px;
+      text-decoration: none;
+      border-radius: 5px;
+      transition: background 0.3s;
+      margin-top: 10px;
+    }
+    
+    .btn:hover {
+      background: #575757;
+    }
+    
+    /* Seção Salão */
+    #salao {
+      padding: 40px 0;
+      background: #fff;
+    }
+    
+    #salao h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #333;
+    }
+    
+    /* Carousel - container da aba */
+    .carousel {
+      position: relative;
+      margin: auto;
+      width: 80%;
+      max-width: 600px;
+      margin-bottom: 40px; /* Espaço entre os carousels */
+    }
+    
+    /* Imagens do carousel (sem efeito de fade) */
+    .carousel img {
+      display: none;
+      width: 100%;
+      height: auto;
+    }
+    
+    .carousel img.active {
+      display: block;
+    }
+    
+    /* Botões do carousel */
+    .carousel button {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: rgba(0,0,0,0.5);
+      border: none;
+      padding: 10px;
+      color: #fff;
+      cursor: pointer;
+      font-size: 18px;
+    }
+    
+    .carousel .prev {
+      left: 10px;
+    }
+    
+    .carousel .next {
+      right: 10px;
+    }
+    
+    /* Outras seções */
+    .content-section {
+      padding: 40px 0;
+    }
+    
+    .content-section h2 {
+      margin-bottom: 20px;
+      text-align: center;
+      color: #333;
+    }
+    
+    .services {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    
+    .service-card {
+      background: #fff;
+      flex: 1 1 calc(33% - 20px);
+      padding: 20px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      border-radius: 5px;
+      transform: translateY(20px);
+      opacity: 0;
+      transition: transform 0.6s ease-out, opacity 0.6s ease-out;
+    }
+    
+    .service-card.visible {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    
+    footer {
+      background: #333;
+      color: #fff;
+      text-align: center;
+      padding: 20px;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Barbearia Pai e Filho</h1>
+    <nav>
+      <a href="#home">Início</a>
+      <a href="#sobre">Sobre</a>
+      <a href="#servicos">Serviços</a>
+      <a href="#salao">Salão</a>
+      <a href="#contato">Contato</a>
+    </nav>
+  </header>
+  
+  <!-- Seção hero sem atalho para a Salão -->
+  <section class="hero" id="home">
+    <div class="hero-text" id="heroText">
+      <h2>Cortes Rápidos, Precisos e Impecáveis</h2>
+      <p>Na Barbearia Pai e Filho, transformamos seu visual em tempo recorde! Eu e meu filho, oferecemos cortes rápidos sem abrir mão da excelência, garantindo um serviço sempre impecável. Descubra como agilidade e técnica se unem para realçar o melhor de você!</p>
+    </div>
+  </section>
+  
+  <!-- Seção Salão contendo duas abas (dois carousels) -->
+  <section id="salao" class="content-section">
+    <div class="container">
+      <h2>Salão</h2>
+      
+      <!-- Primeiro Carousel com 3 imagens -->
+      <div class="carousel">
+        <button class="prev">&#10094;</button>
+        <img src="ImagensBarbearia/BarbeariaFora1.jpg" alt="Imagem 1" class="active">
+        <img src="ImagensBarbearia/BarbeariaFora2.jpg" alt="Imagem 2">
+        <img src="ImagensBarbearia/BarbeariaFora3.jpg" alt="Imagem 3">
+        <button class="next">&#10095;</button>
+      </div>
+      
+      <!-- Segundo Carousel com mais 3 imagens -->
+      <div class="carousel">
+        <button class="prev">&#10094;</button>
+        <img src="ImagensBarbearia/DentroSalao1.jpg" alt="Imagem 4" class="active">
+        <img src="ImagensBarbearia/DentroSalao2.jpg" alt="Imagem 5">
+        <img src="ImagensBarbearia/DentroSalao3.jpg" alt="Imagem 6">
+        <button class="next">&#10095;</button>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Seção Sobre -->
+  <section class="content-section" id="sobre">
+    <div class="container">
+      <h2>Sobre Nós</h2>
+      <p>Na Barbearia Pai e Filho, oferecemos um ambiente moderno e acolhedor para nossos clientes. Nossa missão é proporcionar serviços de alta qualidade, garantindo a melhor experiência em cortes, cuidados com a barba e mais.</p>
+    </div>
+  </section>
+  
+  <!-- Seção Serviços -->
+  <section class="content-section" id="servicos">
+    <div class="container">
+      <h2>Nossos Serviços</h2>
+      <div class="services">
+        <div class="service-card">
+          <h3>Corte Clássico</h3>
+          <p>Experimente o nosso corte clássico, com atenção aos detalhes e uma finalização impecável.</p>
+        </div>
+        <div class="service-card">
+          <h3>Corte Moderno</h3>
+          <p>Atualize seu visual com cortes modernos e tendências atuais, sempre com o toque especial de nossos barbeiros.</p>
+        </div>
+        <div class="service-card">
+          <h3>Barba & Bigode</h3>
+          <p>Realce sua personalidade com nossos serviços para barba e bigode, garantindo um visual bem cuidado.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Seção Contato -->
+  <section class="content-section" id="contato">
+    <div class="container">
+      <h2>Contato</h2>
+      <p>Entre em contato para agendar seu horário ou para mais informações sobre nossos serviços.</p>
+      <p>Email: contato@teste.com | Telefone: (XX) 99999-9999</p>
+    </div>
+  </section>
+  
+  <footer>
+    <p>&copy; 2025 Barbearia Pai e Filho. Todos os direitos reservados.</p>
+  </footer>
+  
+  <script>
+    // Lógica para revelar os cards de serviço conforme rolagem
+    function reveal() {
+      var serviceCards = document.querySelectorAll(".service-card");
+      serviceCards.forEach(card => {
+        var windowHeight = window.innerHeight;
+        var elementTop = card.getBoundingClientRect().top;
+        var elementVisible = 150;
+        if (elementTop < windowHeight - elementVisible) {
+          card.classList.add("visible");
+        }
+      });
+    }
+    window.addEventListener("scroll", reveal);
+    reveal();
+    
+    // Função para inicializar os carousels de forma independente
+    document.querySelectorAll('.carousel').forEach(carousel => {
+      const images = carousel.querySelectorAll('img');
+      const prevButton = carousel.querySelector('.prev');
+      const nextButton = carousel.querySelector('.next');
+      let currentIndex = 0;
+      
+      function showImage(index) {
+        images.forEach((img, i) => {
+          img.classList.remove('active');
+          if (i === index) {
+            img.classList.add('active');
+          }
+        });
+      }
+      
+      prevButton.addEventListener('click', () => {
+        currentIndex = (currentIndex - 1 + images.length) % images.length;
+        showImage(currentIndex);
+      });
+      
+      nextButton.addEventListener('click', () => {
+        currentIndex = (currentIndex + 1) % images.length;
+        showImage(currentIndex);
+      });
+    });
+  </script>
+</body>
+</html>
